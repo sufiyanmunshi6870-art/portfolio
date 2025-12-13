@@ -1,76 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Booking Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <!-- NAVBAR -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MohammadSufiyan Munshi— Portfolio</title>
+  <meta name="description" content="Personal portfolio / landing page" />
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #94a3b8;
+      --accent: #6ee7b7;
+      --glass: rgba(255, 255, 255, 0.04);
+      --maxw: 1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071023);
+      color: #e6eef8
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 32px
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1f2937, #0ea5a9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #071023
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    .btn-ghost {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: transparent
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: center;
+      padding: 48px 0
+    }
+
+    .intro h1 {
+      font-size: clamp(28px, 4.5vw, 44px);
+      margin: 0 0 8px
+    }
+
+    .intro p {
+      color: var(--muted);
+      margin: 0 0 20px;
+      line-height: 1.6
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #7ce59f, #4dd1ff);
+      color: #061826;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: none
+    }
+
+    .secondary {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.06)
+    }
+
+    /* Card */
+    .profile-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      padding: 22px;
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6)
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #111827, #0ea5a9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #e6eef8
+    }
+
+    .meta {
+      margin-top: 14px
+    }
+
+    .meta h3 {
+      margin: 0
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px
+    }
+
+    .skill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--glass);
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    /* Sections */
+    section {
+      padding: 48px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02)
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .project {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      padding: 14px;
+      border-radius: 12px
+    }
+
+    .project h4 {
+      margin: 0 0 8px
+    }
+
+    .about {
+      max-width: 760px;
+      color: var(--muted)
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 760px
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: transparent;
+      color: inherit
+    }
+
+    textarea {
+      min-height: 120px
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    /* Responsive */
+    @media (max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .projects {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start
+      }
+    }
+
+    @media (max-width:560px) {
+      .projects {
+        grid-template-columns: 1fr
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px
+      }
+    }
+
+    /* small animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all .6s cubic-bezier(.2, .9, .2, 1)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
     <header>
-        <nav class="navbar">
-            <div class="logo">TravelGo</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#destinations">Destinations</a></li>
-                <li><a href="#packages">Packages</a></li>
-                <li><a href="#booking">Book Now</a></li>
-            </ul>
-            <div class="menu-btn" onclick="toggleMenu()">☰</div>
-        </nav>
+      <div class="brand">
+        <div class="logo" aria-hidden>SM</div>
+        <div>
+          <div style="font-weight:700">MohammadSufiyan Munshi</div>
+          <div style="font-size:13px;color:var(--muted)">Web Developer</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="btn-ghost" href="#contact">Hire me</a>
+      </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Explore the World</h1>
-            <p>Your adventure starts with us. Book your dream vacation today!</p>
-            <a href="#packages" class="btn">View Packages</a>
+    <main>
+      <section class="hero">
+        <div class="intro">
+          <h1 class="reveal">Hi — I'm MohammadSufiyan-munshi. I build usable web experiences.</h1>
+          <p class="reveal">I design and code responsive websites and web apps that solve problems and look great.
+            Currently available for and full-time opportunities.</p>
+          <div class="cta reveal">
+            <a class="primary" href="#contact">Work with me</a>
+            <a class="secondary" href="#projects">See projects</a>
+          </div>
+          <div style="margin-top:20px;display:flex;gap:16px;align-items:center" class="reveal">
+            <div style="display:flex;gap:10px;align-items:center">
+              <strong>Location</strong>
+              <span style="color:var(--muted)">Ahmedabad, India</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center">
+              <strong>Availability</strong>
+              <span style="color:var(--muted)">Open to work</span>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- DESTINATIONS -->
-    <section id="destinations" class="section">
-        <h2>Popular Destinations</h2>
-        <div class="grid">
-            <div class="card"><img src="https://picsum.photos/300?random=1"><h3>Paris</h3></div>
-            <div class="card"><img src="https://picsum.photos/300?random=2"><h3>Dubai</h3></div>
-            <div class="card"><img src="https://picsum.photos/300?random=3"><h3>Maldives</h3></div>
+        <aside class="profile-card reveal" aria-label="Profile card">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div class="avatar">SM</div>
+            <div class="meta">
+              <h3>MohammadSufiyan Munshi</h3>
+              <div style="color:var(--muted);font-size:14px">Web Developer</div>
+              <div class="skills" aria-hidden>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Python</span>
+                <span class="skill">Dcn</span>
+                <span class="skill">SQL(oracle)</span>
+                <span class="skill">Video Editing</span>
+                <span class="skill">Communication</span>
+                <span class="skill">Wordpress</span>
+                <span class="skill">Django</span>
+                <span class="skill">React</span>
+                <span class="skill">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:14px;color:var(--muted);font-size:14px">I help startups and businesses create fast,
+            accessible user interfaces and delightful interactions.</div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <h2>About</h2>
         </div>
-    </section>
+        <div class="about reveal">
+          <p>👋 About Me
 
-    <!-- PACKAGES -->
-    <section id="packages" class="section">
-        <h2>Travel Packages</h2>
+            Hello! I’m Mohammad Sufiyan Munshi, a passionate and results-driven professional dedicated to delivering
+            impactful digital solutions. I thrive on transforming ideas into real, usable products—whether it’s through
+            clean design, functional development, or creative problem-solving.
 
-        <div id="packageList" class="packages"></div>
-    </section>
+            With a strong focus on quality, consistency, and user experience, I love working on projects that challenge
+            me to learn, innovate, and grow. My goal is simple: to create work that adds value and leaves a lasting
+            impression.
 
-    <!-- BOOKING FORM -->
-    <section id="booking" class="section">
-        <h2>Book Your Trip</h2>
+            When I’m not building or experimenting with new tools, you’ll find me exploring new technologies, learning
+            new concepts, and staying updated with industry trends.
 
-        <form class="booking-form">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <select required>
-                <option value="">Select Destination</option>
-                <option>Paris</option>
-                <option>Dubai</option>
-                <option>Maldives</option>
-            </select>
-            <input type="date" required>
-            <button type="submit">Submit Booking</button>
-        </form>
-    </section>
+            Let’s build something amazing together!</p>
+        </div>
+      </section>
 
-    <!-- FOOTER -->
+      <section id="projects">
+        <div class="section-title">
+          <h2>Selected projects</h2>
+        </div>
+        <div class="projects">
+          <article class="project reveal">
+            <h4>Project One</h4>
+            <p style="color:var(--muted)">A protfolio landing page using Html Css And JavaScript</p>
+            <div style="margin-top:12px"><a href="#">Live demo</a> • <a href="#">Source</a></div>
+          </article>
+          <article class="project reveal">
+            <h4>Project Two</h4>
+            <p style="color:var(--muted)">An interactive dashboard prototype with charts and filters.</p>
+            <div style="margin-top:12px"><a href="#">Live demo</a> • <a href="#">Source</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-title">
+          <h2>Contact</h2>
+        </div>
+        <div class="contact-grid reveal">
+          <form id="contactForm" onsubmit="return false;">
+            <label class="sr-only">Name</label>
+            <input id="name" placeholder="Enter Your name" required />
+            <label class="sr-only">Email</label>
+            <input id="email" type="email" placeholder="xyz@example.com" required />
+            <label class="sr-only">Message</label>
+            <textarea id="message" placeholder="Tell me about your project" required></textarea>
+            <div style="margin-top:12px"><button class="primary" onclick="submitForm()">Send message</button></div>
+          </form>
+
+          <div
+            style="padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)">
+            <h4>Get in touch</h4>
+            <p style="color:var(--muted)">Email: <a href="sufiyanmunshi6870@gmail.com">abc@gmail.com</a></p>
+            <p style="color:var(--muted)">Phone: <a href="+91 7600460991">+911234567890</a></p>
+            <div style="margin-top:12px">
+              <strong style="display:block;margin-bottom:8px">Follow</strong>
+              <div style="display:flex;gap:8px">
+                <a href="https://www.linkedin.com/in/mohammadsufiyan-munshi-032576277/">LinkedIn</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>x
+    </main>
+
     <footer>
-        <p>© 2025 TravelGo. All rights reserved.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div>© <span id="year"></span>MohammadSufiyan Munshi</div>
+        <div style="color:var(--muted)">Built with ❤️ • HTML • CSS • JavaScript</div>
+      </div>
     </footer>
+  </div>
 
-<script src="script.js"></script>
+  <script>
+    // Small helpers: reveal on scroll and form demo
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function revealOnScroll() {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      })
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please complete the form.');
+        return;
+      }
+      // Demo behavior: show quick feedback. Replace with real API call as needed.
+      alert('Thanks ' + name + ' — message sent (demo).');
+      document.getElementById('contactForm').reset();
+    }
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href.length > 1) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      })
+    })
+  </script>
 </body>
+
 </html>
